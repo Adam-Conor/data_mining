@@ -1,8 +1,3 @@
-import java.io.FileReader;
-import java.util.List;
-import java.util.Iterator;
-
-import com.opencsv.CSVReader;
 /**
 	Name files: yyyy_w? eg 2015_9 for year 2015 and week 9
  */
