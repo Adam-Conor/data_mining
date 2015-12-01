@@ -1,3 +1,4 @@
+import java.util.regex.Pattern;
 import java.util.List;
 import java.io.FileReader;
 import com.opencsv.CSVReader;
@@ -22,6 +23,13 @@ public class Reader {
 
 	private int indexOfName;
 	private int indexOfPoints;
+	private int indexOfRank;
+	private int indexOfPrevRank;
+	private int indexOfTotalPoints;
+	private int indexOfDivisorEvents;
+	private int indexOfActualEvents;
+	private int indexOfTotalPointsGained;
+	private int indexOfTotalPointsLost;
 
 	private int csvPointer;
 
@@ -40,6 +48,13 @@ public class Reader {
 
 		indexOfName = DataInfo.getIndexOfName();
 		indexOfPoints = DataInfo.getIndexOfPoints();
+		indexOfRank = DataInfo.getIndexOfRank();
+		indexOfPrevRank = DataInfo.getIndexOfPrevRank();
+		indexOfTotalPoints = DataInfo.getIndexOfTotalPoints();
+		indexOfDivisorEvents = DataInfo.getIndexOfDivisorEvents();
+		indexOfActualEvents = DataInfo.getIndexOfActualEvents();
+		indexOfTotalPointsGained = DataInfo.getIndexOfTotalPointsGained();
+		indexOfTotalPointsLost = DataInfo.getIndexOfTotalPointsLost();
 
 		csvPointer = 1;
 	}
@@ -68,7 +83,22 @@ public class Reader {
 
 		String name = s[indexOfName];
 		double avgPoints = Double.valueOf(s[indexOfPoints]);
+		double rank = Double.valueOf(s[indexOfRank]);
+		double prevRank = trimParens(s[indexOfPrevRank]);
+		double totalPoints = Double.valueOf(s[indexOfTotalPoints]);
+		double divisorEvents = Double.valueOf(s[indexOfDivisorEvents]);
+		double actualEvents = Double.valueOf(s[indexOfActualEvents]);
+		double totalPointsGained = Double.valueOf(s[indexOfTotalPointsGained]);
+		double totalPointsLost = Double.valueOf(s[indexOfTotalPointsLost]);
 
-		return new Player(name, avgPoints);
+		return new Player(name, avgPoints, rank, prevRank, 
+				totalPoints, divisorEvents, actualEvents, totalPointsGained, totalPointsLost);
+	}
+
+	private double trimParens(String prevRank) {
+		prevRank = prevRank.replace("(", "");
+		prevRank = prevRank.replace(")", "");
+
+		return Double.valueOf(prevRank);
 	}
 }
