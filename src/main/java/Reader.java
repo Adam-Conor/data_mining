@@ -28,7 +28,7 @@ public class Reader {
 	/**
 	 * Default all-args constructor
 	 * initialises the pointer to 1 to ignore the headers and
-	 * gets the indexes of the relevant columns specified in the {@link DataFormat} class.
+	 * gets the indexes of the relevant columns specified in the {@link DataInfo} class.
 	 * @param fileName name of the file to read as a string
 	 */
 	public Reader(String fileName) {
@@ -38,8 +38,8 @@ public class Reader {
 			e.printStackTrace();
 		}
 
-		indexOfName = DataFormat.getIndexOfName();
-		indexOfPoints = DataFormat.getIndexOfPoints();
+		indexOfName = DataInfo.getIndexOfName();
+		indexOfPoints = DataInfo.getIndexOfPoints();
 
 		csvPointer = 1;
 	}
@@ -59,7 +59,7 @@ public class Reader {
 	/**
 	 * Get the values from a player from the current position in the file
 	 * Uses internal pointer to read in the next row
-	 * Only reads the values specified by the {@link DataFormat} class
+	 * Only reads the values specified by the {@link DataInfo} class
 	 * @return Player with name and average points from csv file
 	 */
 	public Player getPlayer() {

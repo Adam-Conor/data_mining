@@ -16,7 +16,7 @@ public class Main {
 		Reader reader = new Reader(name);
 
 		reader.readAll();
-		int size = DataFormat.getMaxPlayers();
+		int size = DataInfo.getMaxPlayers();
 
 		Player[] players = new Player[size];
 

@@ -6,7 +6,7 @@
  * @author Adam O'Flynn <adam.oflynn7@mail.dcu.ie>
  * @since 2015-11-30
  */
-public class DataFormat {
+public class DataInfo {
 	private static final int TOP_PLAYERS = 30;
 	private static final int MAX_PLAYERS = 300;
 
