@@ -10,22 +10,37 @@
 * @since 2015-11-30
 */
 public class Main {
-	private static String name = "2015_9.csv";
+	private static final String root = "/home/conor/Dropbox/college/comp_sci/data_mining/2015_csvs/";
 
 	public static void main(String[] args) {
-		Reader reader = new Reader(name);
+		Week[] weeks = new Week[26];
+
+		for(int i = 0; i < weeks.length; i++) {
+			weeks[i] = getWeek(i + 1);
+		}
+
+		for(Week w : weeks) {
+			System.out.println(w);
+		}
+	}
+
+	private static Week getWeek(int weekNumber) {
+		String fileName = root + DataInfo.get2015Prefix() + weekNumber + DataInfo.getCsvSuffix();
+
+		Reader reader = new Reader(fileName);
 
 		reader.readAll();
+
 		int size = DataInfo.getMaxPlayers();
 
-		Player[] players = new Player[size];
+		Week week = new Week(weekNumber, size);
 
 		for(int i = 0; i < size; i++) {
-			players[i] = reader.getPlayer();
+			Player p = reader.getPlayer();
+
+			week.setPlayer(p);
 		}
 
-		for(Player player : players) {
-			System.out.println(player);
-		}
+		return week;
 	}
 }

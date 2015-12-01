@@ -13,6 +13,9 @@ public class DataInfo {
 	private static final int INDEX_OF_NAME = 3;
 	private static final int INDEX_OF_POINTS = 5;
 
+	private static final String PREFIX = "2015_";
+	private static final String CSV_SUFFIX = ".csv";
+
 	/**
 	 * Get the top players, defined as top 30 for now
 	 * @return number of top players
@@ -43,5 +46,21 @@ public class DataInfo {
 	 */
 	public static int getIndexOfPoints() {
 		return INDEX_OF_POINTS;
+	}
+
+	/**
+	 * Get the file name prefix for 2015
+	 * @return file name prefix as a string
+	 */
+	public static String get2015Prefix() {
+		return PREFIX;
+	}
+
+	/**
+	 * Get the csv suffix for a file
+	 * @return .csv suffix as a string
+	 */
+	public static String getCsvSuffix() {
+		return CSV_SUFFIX;
 	}
 }
