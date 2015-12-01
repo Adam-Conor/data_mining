@@ -19,9 +19,11 @@ public class Main {
 			weeks[i] = getWeek(i + 1);
 		}
 
-		for(Week w : weeks) {
-			System.out.println(w);
-		}
+		System.out.println(weeks[5].getPlayer(0));
+
+		//for(Week w : weeks) {
+		//	System.out.println(w);
+		//}
 	}
 
 	private static Week getWeek(int weekNumber) {
