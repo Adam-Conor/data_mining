@@ -2,6 +2,7 @@
  * Class for holding information about the format of the data such as
  * total number of rows and index of values in csv file
  * All work is our own
+ * TODO comment new functions
  * @author Conor Smyth <conor.smyth39@mail.dcu.ie>
  * @author Adam O'Flynn <adam.oflynn7@mail.dcu.ie>
  * @since 2015-11-30
@@ -11,7 +12,14 @@ public class DataInfo {
 	private static final int MAX_PLAYERS = 300;
 
 	private static final int INDEX_OF_NAME = 3;
-	private static final int INDEX_OF_POINTS = 5;
+	private static final int INDEX_OF_AVG_POINTS = 5;
+	private static final int INDEX_OF_RANK = 0;
+	private static final int INDEX_OF_PREV_RANK = 1;
+	private static final int INDEX_OF_TOTAL_POINTS = 6;
+	private static final int INDEX_OF_DIV_EVENTS = 7;
+	private static final int INDEX_OF_EVENTS = 10;
+	private static final int INDEX_OF_TOTAL_POINTS_GAIN = 9;
+	private static final int INDEX_OF_TOTAL_POINTS_LOST = 8;
 
 	private static final String PREFIX = "2015_";
 	private static final String CSV_SUFFIX = ".csv";
@@ -45,7 +53,35 @@ public class DataInfo {
 	 * @return position of the points field as int
 	 */
 	public static int getIndexOfPoints() {
-		return INDEX_OF_POINTS;
+		return INDEX_OF_AVG_POINTS;
+	}
+
+	public static int getIndexOfRank() {
+		return INDEX_OF_RANK;
+	}
+
+	public static int getIndexOfPrevRank() {
+		return INDEX_OF_PREV_RANK;
+	}
+
+	public static int getIndexOfTotalPoints() {
+		return INDEX_OF_TOTAL_POINTS;
+	}
+
+	public static int getIndexOfDivisorEvents() {
+		return INDEX_OF_DIV_EVENTS;
+	}
+
+	public static int getIndexOfActualEvents() {
+		return INDEX_OF_EVENTS;
+	}
+
+	public static int getIndexOfTotalPointsGained() {
+		return INDEX_OF_TOTAL_POINTS_GAIN;
+	}
+
+	public static int getIndexOfTotalPointsLost() {
+		return INDEX_OF_TOTAL_POINTS_LOST;
 	}
 
 	/**
