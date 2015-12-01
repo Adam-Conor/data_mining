@@ -9,7 +9,6 @@
 * @author Adam O'Flynn <adam.oflynn7@mail.dcu.ie>
 * @since 2015-11-30
 */
-@SuppressWarnings("unchecked")
 public class Main {
 	private static String name = "2015_9.csv";
 
