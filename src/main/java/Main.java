@@ -3,24 +3,35 @@ import java.util.List;
 import java.util.Iterator;
 
 import com.opencsv.CSVReader;
-
 /**
 	Name files: yyyy_w? eg 2015_9 for year 2015 and week 9
-	index 0 is the header i.e s[0];
-	index 1..N is the values for each i.e s[1..N]
+ */
+
+/**
+* Class to drive the code for the assignment
+* All work is our own
+* @author Conor Smyth <conor.smyth39@mail.dcu.ie>
+* @author Adam O'Flynn <adam.oflynn7@mail.dcu.ie>
+* @since 2015-11-30
 */
-
 @SuppressWarnings("unchecked")
-class Main {
-	private static String name = "2015_9";
+public class Main {
+	private static String name = "2015_9.csv";
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		Reader reader = new Reader(name);
 
 		reader.readAll();
+		int size = DataFormat.getMaxPlayers();
 
-		Player p = reader.getPlayer();
+		Player[] players = new Player[size];
 
-		System.out.println(p);
+		for(int i = 0; i < size; i++) {
+			players[i] = reader.getPlayer();
+		}
+
+		for(Player player : players) {
+			System.out.println(player);
+		}
 	}
 }

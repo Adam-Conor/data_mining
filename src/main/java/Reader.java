@@ -2,37 +2,73 @@ import java.util.List;
 import java.io.FileReader;
 import com.opencsv.CSVReader;
 
-class Reader {
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+/**
+ * Class to wrap up the reader responsibilites
+ * Uses OpenCSV
+ * All work is our own
+ * @author Conor Smyth <conor.smyth39@mail.dcu.ie>
+ * @author Adam O'Flynn <adam.oflynn7@mail.dcu.ie>
+ * @since 2015-11-30
+ * @see <a href="http://opencsv.sourceforge.net/">Open CSV</a>
+ */
+public class Reader {
 	private CSVReader reader;
 
-	private @SuppressWarnings("unchecked")
-	List data;
+	@SuppressWarnings("unchecked")
+		private List<String[]> data;
 
 	private int indexOfName;
 	private int indexOfPoints;
 
-	private int tracker;
-	
+	private int csvPointer;
+
+	/**
+	 * Default all-args constructor
+	 * initialises the pointer to 1 to ignore the headers and
+	 * gets the indexes of the relevant columns specified in the {@link DataFormat} class.
+	 * @param fileName name of the file to read as a string
+	 */
 	public Reader(String fileName) {
-	 	reader = new CSVReader(new FileReader(fileName));
+		try {
+			reader = new CSVReader(new FileReader(fileName));
+		} catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}
 
 		indexOfName = DataFormat.getIndexOfName();
 		indexOfPoints = DataFormat.getIndexOfPoints();
 
-		tracker = 0;
+		csvPointer = 1;
 	}
 
+	/**
+	 * Reads all the data into internal {@code List<String[]>}
+	 * @see com.opencsv.CSVReader#readAll
+	 */
 	public void readAll() {
-		data = reader.readAll();
+		try {
+			data = reader.readAll();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 
+	/**
+	 * Get the values from a player from the current position in the file
+	 * Uses internal pointer to read in the next row
+	 * Only reads the values specified by the {@link DataFormat} class
+	 * @return Player with name and average points from csv file
+	 */
 	public Player getPlayer() {
-		String[] s = data.get(tracker);
-		tracker++;
+		String[] s = data.get(csvPointer);
+		csvPointer++;
 
 		String name = s[indexOfName];
 		double avgPoints = Double.valueOf(s[indexOfPoints]);
-		
+
 		return new Player(name, avgPoints);
 	}
 }
