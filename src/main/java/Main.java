@@ -10,8 +10,6 @@
 * @since 2015-11-30
 */
 public class Main {
-	private static final String root = "/home/conor/Dropbox/college/comp_sci/data_mining/2015_csvs/";
-
 	public static void main(String[] args) {
 		Week[] weeks = new Week[48];
 
@@ -42,7 +40,7 @@ public class Main {
 	}
 
 	private static Week getWeek(int weekNumber) {
-		String fileName = root + DataInfo.get2015Prefix() + weekNumber + DataInfo.getCsvSuffix();
+		String fileName = DataInfo.CSV_ROOT + DataInfo.get2015Prefix() + weekNumber + DataInfo.getCsvSuffix();
 
 		Reader reader = new Reader(fileName);
 

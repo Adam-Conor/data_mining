@@ -8,6 +8,8 @@
  * @since 2015-11-30
  */
 public class DataInfo {
+	public static final String CSV_ROOT = "../../../csvs/";
+
 	private static final int TOP_PLAYERS = 30;
 	private static final int MAX_PLAYERS = 300;
 
