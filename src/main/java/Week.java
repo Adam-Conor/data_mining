@@ -89,6 +89,21 @@ class Week {
 	}
 
 	/**
+	* Get a player with a specified name
+	* Returns error player if not found
+	* @return player with specified name, error player
+	*/
+	public Player getPlayer(String name) {
+		for(Player p : players) {
+			if(p.getName().equals(name)) {
+				return p;
+			}
+		}
+
+		return new Player("Player Doesnt exist");
+	}
+
+	/**
 	 * get the size of the player array
 	 * @return size of player array as an int
 	 */

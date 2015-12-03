@@ -1,4 +1,3 @@
-import java.util.regex.Pattern;
 import java.util.List;
 import java.io.FileReader;
 import com.opencsv.CSVReader;
@@ -57,6 +56,14 @@ public class Reader {
 		indexOfTotalPointsLost = DataInfo.getIndexOfTotalPointsLost();
 
 		csvPointer = 1;
+	}
+
+	/**
+	 * Get the size of the data
+	 * @return number of rows read in as an int
+	 */
+	public int size() {
+		return data.size();
 	}
 
 	/**

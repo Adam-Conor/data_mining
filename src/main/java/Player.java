@@ -19,6 +19,10 @@ public class Player {
 
 	public Player() {}
 
+	public Player(String name) {
+		this.name = name;
+	}
+
 	/**
 	 * Default all-args constructor
 	 * @param name name of the player as a string
