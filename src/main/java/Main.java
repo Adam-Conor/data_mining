@@ -24,10 +24,7 @@ public class Main {
 
 		HashMap<String, Double> playerWithResults = new HashMap<>();
 		Object[] setArray = distinctPlayerNames.toArray();
-
-		for(Object s : setArray) {
-			System.out.println(s);
-		}
+		Utils.printNames(distinctPlayerNames);
 
 		/* Store all the possible player names */
 		//String[] playerNames = new String[400];

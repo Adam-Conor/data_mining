@@ -60,4 +60,10 @@ class Utils {
 
 		return distinctPlayerNames;
 	}
+
+	public static void printNames(Set<String> names) {
+		for(Object o : names.toArray()) {
+			System.out.println(o);
+		}
+	}
 }
