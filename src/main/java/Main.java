@@ -1,3 +1,6 @@
+import java.util.Set;
+import java.util.HashMap;
+
 /**
 	Name files: yyyy_w? eg 2015_9 for year 2015 and week 9
  */
@@ -10,52 +13,48 @@
 * @since 2015-11-30
 */
 public class Main {
+	private static final int numWeeks = 48;
+
 	public static void main(String[] args) {
-		Week[] weeks = new Week[48];
+		/* Get all the weeks data in a week array */
+		Week[] weeks = Utils.getWeeks();
 
-		for(int i = 0; i < weeks.length; i++) {
-			weeks[i] = getWeek(i + 1);
+		//HashMap<String, Double> playerWithResults = new HashMap<>(); //not sure about this
+		Set<String> distinctPlayerNames = Utils.getDistinctPlayerNames(weeks);
+
+		HashMap<String, Double> playerWithResults = new HashMap<>();
+		Object[] setArray = distinctPlayerNames.toArray();
+
+		for(Object s : setArray) {
+			System.out.println(s);
 		}
 
-		Player[] testArray = new Player[weeks.length];
-		int pointer = 0;
+		/* Store all the possible player names */
+		//String[] playerNames = new String[400];
+		//List<String>
+		//int pointer = 0;
 
-		String name = weeks[pointer].getPlayer(0).getName();
-		int[] weekNo = new int[48];
-		int i = 0;
+		//int mess = 0;
+		//for(Week w : weeks) {
+		//	Player[] players = w.getPlayers();
 
-		for(Week w : weeks) {
-			testArray[pointer] = w.getPlayer(name);
-			weekNo[i] = w.getWeekNumber();
-			i++;
-			pointer++;
-		}
+		//	for(Player p : players) {
+		//		playerNames[pointer] = p.getName();
+		//		pointer++;
+		//	}
+		//}
 
-		i = 0;
+		//for(Week w : weeks) {
+		//	Player[] players = w.getPlayers();
 
-		for(Player p : testArray) {
-			System.out.println("Week: " + weekNo[i] + p);
-			i++;
-		}
-	}
+		//	for(Player p : players) {
+		//		String name = p.getName();
 
-	private static Week getWeek(int weekNumber) {
-		String fileName = DataInfo.CSV_ROOT + DataInfo.get2015Prefix() + weekNumber + DataInfo.getCsvSuffix();
+		//		double temp = playerWithResults.get(name);
+		//		temp += p.getTotalPointsGained();
 
-		Reader reader = new Reader(fileName);
-
-		reader.readAll();
-
-		int size = DataInfo.getMaxPlayers();
-
-		Week week = new Week(weekNumber, size);
-
-		for(int i = 0; i < size; i++) {
-			Player p = reader.getPlayer();
-
-			week.setPlayer(p);
-		}
-
-		return week;
+		//		playerWithResults.put(name, temp);
+		//	}
+		//}
 	}
 }

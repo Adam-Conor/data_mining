@@ -13,6 +13,8 @@ public class DataInfo {
 	private static final int TOP_PLAYERS = 30;
 	private static final int MAX_PLAYERS = 300;
 
+	private static final int MAX_WEEKS = 48;
+
 	private static final int INDEX_OF_NAME = 3;
 	private static final int INDEX_OF_AVG_POINTS = 5;
 	private static final int INDEX_OF_RANK = 0;
@@ -25,6 +27,10 @@ public class DataInfo {
 
 	private static final String PREFIX = "2015_";
 	private static final String CSV_SUFFIX = ".csv";
+
+	public static int getMaxWeeks() {
+		return MAX_WEEKS;
+	}
 
 	/**
 	 * Get the top players, defined as top 30 for now
