@@ -4,6 +4,11 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.HashMap;
+
+/**
+* Mostly ignore this class for now, was experimenting
+*/
+
 class Utils {
 	public static final int numWeeks = DataInfo.getMaxWeeks();
 
