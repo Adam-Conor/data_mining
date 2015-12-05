@@ -1,5 +1,6 @@
 import java.util.Set;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
 	Name files: yyyy_w? eg 2015_9 for year 2015 and week 9
@@ -19,25 +20,59 @@ public class Main {
 		/* Get all the weeks data in a week array */
 		Week[] weeks = Utils.getWeeks();
 
-		//HashMap<String, Double> playerWithResults = new HashMap<>(); //not sure about this
-		Set<String> distinctPlayerNames = Utils.getDistinctPlayerNames(weeks);
+		//Set<String> distinctPlayerNames = Utils.getDistinctPlayerNames(weeks);
+		//Object[] namesFromSet = distinctPlayerNames.toArray();
 
-		HashMap<String, Double> playerWithResults = new HashMap<>();
-		Object[] setArray = distinctPlayerNames.toArray();
-		Utils.printNames(distinctPlayerNames);
+		//Map<Integer, Double> weekAndPoints = Utils.initWeekAndPoints();
+		//Map<String, Map<Integer, Double>> performance = Utils.initNamesWithWeeksAndPoints(namesFromSet, weekAndPoints);
+		//for(Object o : namesFromSet) {
+		//	for(Week w : weeks) {
+		//		Player p = w.getPlayer((String) o);
+		//		int weekNo = w.getWeekNumber();
 
-		/* Store all the possible player names */
-		//String[] playerNames = new String[400];
-		//List<String>
-		//int pointer = 0;
+		//		Map<Integer, Double> temp = performance.get((String) o);
+		//		temp.put(weekNo, p.getAvgPoints());
 
-		//int mess = 0;
+		//		performance.put((String) o, temp);
+		//	}
+		//}
+		//
+		//for(Object o : namesFromSet) {
+		//	Map<Integer, Double> weekly = performance.get((String) o);
+
+		//	System.out.println("For player named: " + o);
+
+		//	for(Integer i = 1; i <= 48; i++) {
+		//		Double result = weekly.get(i);
+		//		
+		//		System.out.println("Week: " + i + " Points: " + result);
+		//	}
+		//}
+		
+
 		//for(Week w : weeks) {
 		//	Player[] players = w.getPlayers();
+		//	int weekNo = w.getWeekNumber();
+		//	System.out.println(weekNo);
 
 		//	for(Player p : players) {
-		//		playerNames[pointer] = p.getName();
-		//		pointer++;
+		//		String name = p.getName(); //get the name for the player
+		//		Map<Integer, Double> temp = performance.get(name); //get the associated weekNo and result
+
+		//		temp.put(weekNo, p.getAvgPoints()); //add the the new result
+		//		performance.put(name, temp); //add new thing to value
+		//	}
+		//}
+
+		//for(Object o : namesFromSet) {
+		//	Map<Integer, Double> weekly = performance.get((String) o);
+
+		//	System.out.println("For player named: " + o);
+
+		//	for(Integer i = 1; i <= 48; i++) {
+		//		Double result = weekly.get(i);
+		//		
+		//		System.out.println("Week: " + i + " Points: " + result);
 		//	}
 		//}
 

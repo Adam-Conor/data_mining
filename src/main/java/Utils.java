@@ -2,6 +2,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.HashMap;
 class Utils {
 	public static final int numWeeks = DataInfo.getMaxWeeks();
 
@@ -59,6 +61,36 @@ class Utils {
 		distinctPlayerNames.addAll(allPlayerNames);
 
 		return distinctPlayerNames;
+	}
+
+	public static Map<String, Double> putPlayersInMap(Object[] names) {
+		HashMap<String, Double> x = new HashMap<String, Double>();
+
+		for(Object o : names) {
+			x.put((String) o, 0.0);
+		}
+
+		return x;
+	}
+
+	public static Map<Integer, Double> initWeekAndPoints() {
+		HashMap<Integer, Double> x = new HashMap<>();
+
+		for(int i = 1; i <= 48; i++) {
+			x.put(i, 0.0);
+		}
+
+		return x;
+	}
+
+	public static Map<String, Map<Integer, Double>> initNamesWithWeeksAndPoints(Object[] names, Map<Integer, Double> weekAndResult) {
+		HashMap<String, Map<Integer, Double>> x = new HashMap<>();
+
+		for(Object o : names) {
+			x.put((String) o, weekAndResult);
+		}
+
+		return x;
 	}
 
 	public static void printNames(Set<String> names) {
