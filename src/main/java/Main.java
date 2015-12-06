@@ -98,10 +98,11 @@ public class Main {
 		/* Find the winner */
 		String winnerName = "";
 		Double winnerScore = 0.0;
+
 		for(int i = 0; i < playersTotalPoints.length; i++) {
 			if(playersTotalGained[i] > winnerScore) {
 				winnerScore = playersTotalGained[i];
-				winnerName = (String) potentialPlayerArray[i % 3];
+				winnerName = (String) potentialPlayerArray[i % potentialPlayerArray.length];
 			}
 		}
 
