@@ -18,7 +18,7 @@ public class Reader {
 	private CSVReader reader;
 
 	@SuppressWarnings("unchecked")
-		private List<String[]> data;
+	private List<String[]> data;
 
 	private int indexOfName;
 	private int indexOfPoints;

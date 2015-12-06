@@ -89,10 +89,10 @@ class Week {
 	}
 
 	/**
-	* Get a player with a specified name
-	* Returns error player if not found
-	* @return player with specified name, error player
-	*/
+	 * Get a player with a specified name
+	 * Returns error player if not found
+	 * @return player with specified name, error player
+	 */
 	public Player getPlayer(String name) {
 		for(Player p : players) {
 			if(p.getName().equals(name)) {

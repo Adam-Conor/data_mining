@@ -1,6 +1,4 @@
-import java.util.Set;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
 
 /**
 	Name files: yyyy_w? eg 2015_9 for year 2015 and week 9
@@ -14,49 +12,99 @@ import java.util.Map;
  * @since 2015-11-30
  */
 public class Main {
-	private static final int numWeeks = 48;
-
 	public static void main(String[] args) {
 		/* Get all the weeks data in a week array */
 		Week[] weeks = Utils.getWeeks();
+		int numPlayers = DataInfo.getTopPlayers();
 
-		/* All work for the leader per week */
-		HashMap<Integer, Double> gained = new HashMap<>();
-		HashMap<Integer, Double> lost = new HashMap<>();
-		String first = weeks[0].getPlayer(0).getName();
+		/* Arrays for holding the quatile information */
+		Double[] upperQs = new Double[weeks.length];
+		Double[] upperWhiskers = new Double[weeks.length];
+
+		/* Global pointer for tracking progress */
+		int pointer = 0;
+
+		/* Set for classifying player as potential winner */
+		HashSet<String> potentialPlayer = new HashSet<>();
+
+		/* Get the upper whiskers for classifying players */
+		for(int i = 0; i < weeks.length; i++) {
+			Double[] results = new Double[numPlayers];
+			int resultPointer = 0;
+
+			Player[] players = weeks[i].getPlayers();
+
+			for(Player p : players) {
+				results[resultPointer] = p.getAvgPoints();
+
+				resultPointer++;
+			}
+
+			Double upperQ = Arithmetic.upperQ(results);
+			upperWhiskers[pointer] = upperQ + Arithmetic.iqr(results) * 1.5;
+
+			pointer++;
+		}
+
+		/* Classify a player a potential winner by checking if they ever make it over the upper whisker */
+		for(Week w : weeks) {
+			Player[] players = w.getPlayers();
+			int weekPointer = w.getWeekNumber() - 1;
+
+			for(Player p : players) {
+				if(p.getAvgPoints() >= upperWhiskers[weekPointer]) {
+					/* Classify player as potential */
+					potentialPlayer.add(p.getName());
+				}
+			}
+		}
+
+		Object[] potentialPlayerArray = potentialPlayer.toArray();
+
+		/* Show potential players */
+		for(Object o : potentialPlayerArray) {
+			String pPlayer = o.toString();
+
+			//System.out.println(pPlayer);
+		}
+
+		int size = weeks.length * potentialPlayerArray.length;
+
+		/* Player potentialPlayerArray[0] = playersTotal*[0] 
+			 Player potentialPlayerArray[1] = playersTotal*[1]
+			 Player potentialPlayerArray[2] = playersTotal*[2]
+			 Player potentialPlayerArray[N] = playersTotal*[N]
+		 */
+		/* Get the players scores into array to detemine who will win */
+		Double[] playersTotalPoints = new Double[size];
+		Double[] playersTotalGained = new Double[size];
+		Double[] playersTotalLost = new Double[size];
+		pointer = 0;
 
 		for(Week w : weeks) {
-			Player player = w.getPlayer(0);
+			for(Object o : potentialPlayerArray) {
+				String name = o.toString();
 
-			if(!player.getName().equals(first)) {
-				first = player.getName();
+				Player p = w.getPlayer(name);
 
-				System.out.println("Changes to: " + first + " in week " + w.getWeekNumber());
+				playersTotalPoints[pointer] = p.getAvgPoints();
+				playersTotalGained[pointer] = p.getTotalPointsGained();
+				playersTotalLost[pointer] = p.getTotalPointsLost();
+
+				pointer++;
 			}
-
-			Double pointsGained = player.getTotalPointsGained();
-			Double pointsLost = player.getTotalPointsLost();
-			int weekNo = w.getWeekNumber();
-
-			gained.put(weekNo, pointsGained);
-			lost.put(weekNo, pointsLost);
 		}
 
-		for(int i = 0; i <= gained.size(); i++) {
-			int weekNo = i + 1;
-			System.out.println("For week number: " + weekNo);
-
-			Double g = gained.get(weekNo);
-			Double l = lost.get(weekNo);
-
-			System.out.println(g / 2);
-			/* Not very algorithmly but fuck sure take a look haha */
-			if((g / 2) < (l * -1)) { //This works sometimes, could we use to determine a leader after some time?
-				System.out.println("Leader changes for next week");
+		/* Find the winner */
+		String winnerName = "";
+		Double winnerScore = 0.0;
+		for(int i = 0; i < playersTotalPoints.length; i++) {
+			if(playersTotalGained[i] > winnerScore) {
+				winnerScore = playersTotalGained[i];
+				winnerName = (String) potentialPlayerArray[i % 3];
 			}
-
-			System.out.println("Gained: " + gained.get(weekNo));
-			System.out.println("Lost: " + lost.get(weekNo));
 		}
+
+		System.out.println("Player to win: " + winnerName);
 	}
 }

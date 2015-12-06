@@ -74,106 +74,106 @@ public class Player {
 	}
 
 	/**
-	* Get the rank for this player
-	* @return the rank for this player as a double
-	*/
+	 * Get the rank for this player
+	 * @return the rank for this player as a double
+	 */
 	public double getRank() {
 		return rank;
 	}
 
 	/**
-	* Set the rank for this player
-	* @param rank to set for this player as a double
-	*/
+	 * Set the rank for this player
+	 * @param rank to set for this player as a double
+	 */
 	public void setRank(double rank) {
 		this.rank = rank;
 	}
 
 	/**
-	* Get the previous rank for this player, ie the rank for the week previous
-	* @return previous rank for this player as a double
-	*/
+	 * Get the previous rank for this player, ie the rank for the week previous
+	 * @return previous rank for this player as a double
+	 */
 	public double getPrevRank() {
 		return prevRank;
 	}
 
 	/**
-	* Set the total points for this player
-	* @param totalPoints total points for this player as a double
-	*/
+	 * Set the total points for this player
+	 * @param totalPoints total points for this player as a double
+	 */
 	public void setTotalPoints(double totalPoints) {
 		this.totalPoints = totalPoints;
 	}
 
 	/**
-	* Get the total points for this player
-	* @return totalPoints as a double
-	*/
+	 * Get the total points for this player
+	 * @return totalPoints as a double
+	 */
 	public double getTotalPoints() {
 		return totalPoints;
 	}
 
 	/**
-	* Set the divisor events value for this player
-	* Must be between 40 and 52
-	* @param divisorEvents the divisor events for this player
-	*/
+	 * Set the divisor events value for this player
+	 * Must be between 40 and 52
+	 * @param divisorEvents the divisor events for this player
+	 */
 	public void setDivisorEvents(double divisorEvents) {
 		this.divisorEvents = divisorEvents;
 	}
 
 	/**
-	* Get the divisor events for this player
-	* @return divisorEvents as a double
-	*/
+	 * Get the divisor events for this player
+	 * @return divisorEvents as a double
+	 */
 	public double getDivisorEvents() {
 		return divisorEvents;
 	}
 
 	/**
-	* Set the actual events value for this player
-	* @param actualEvents the actual events for this player
-	*/
+	 * Set the actual events value for this player
+	 * @param actualEvents the actual events for this player
+	 */
 	public void setActualEvents(double actualEvents) {
 		this.actualEvents = actualEvents;
 	}
 
 	/**
-	* Get the actual events for this player
-	* @return actualEvents as a double
-	*/
+	 * Get the actual events for this player
+	 * @return actualEvents as a double
+	 */
 	public double getActualEvents() {
 		return actualEvents;
 	}
 
 	/**
-	* Set the total points gained for this player
-	* @param totalPointsGained total points gained as a double
-	*/
+	 * Set the total points gained for this player
+	 * @param totalPointsGained total points gained as a double
+	 */
 	public void setTotalPointsGained(double totalPointsGained) {
 		this.totalPointsGained = totalPointsGained;
 	}
 
 	/**
-	* Get the total points gained for this player
-	* @return totalPointsGained total points gained as a double
-	*/
+	 * Get the total points gained for this player
+	 * @return totalPointsGained total points gained as a double
+	 */
 	public double getTotalPointsGained() {
 		return totalPointsGained;
 	}
 
 	/**
-	* Set the total points lost for this player
-	* @param totalPointsLost total points lost as a double
-	*/
+	 * Set the total points lost for this player
+	 * @param totalPointsLost total points lost as a double
+	 */
 	public void setTotalPointsLost(double totalPointsLost) {
 		this.totalPointsLost = totalPointsLost;
 	}
 
 	/**
-	* Get the total points lost for this player
-	* @return totalPointsLost total points lost as a double
-	*/
+	 * Get the total points lost for this player
+	 * @return totalPointsLost total points lost as a double
+	 */
 	public double getTotalPointsLost() {
 		return totalPointsLost;
 	}
