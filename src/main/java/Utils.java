@@ -6,7 +6,7 @@
  * @since 2015-12-04
  */ 
 class Utils {
-	public static final int numWeeks = 26;//DataInfo.getMaxWeeks() / 2;
+	public static final int numWeeks = 26; //52 / 2
 
 	/**
 	 * Get all the weeks in the csv files
