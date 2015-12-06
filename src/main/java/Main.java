@@ -21,7 +21,7 @@ public class Main {
 		Double[] upperQs = new Double[weeks.length];
 		Double[] upperWhiskers = new Double[weeks.length];
 
-		/* Global pointer for tracking progress */
+		/* Global pointer for tracking things */
 		int pointer = 0;
 
 		/* Set for classifying player as potential winner */
