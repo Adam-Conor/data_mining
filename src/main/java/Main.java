@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
 	Name files: yyyy_w? eg 2015_9 for year 2015 and week 9
@@ -13,7 +16,10 @@ import java.util.*;
  */
 public class Main {
 	public static void main(String[] args) {
+		/* Simple classification and prediction described in Report */
 		simpleClassificationAndPrediction();
+
+		/* Linear Regression attempt described in Report */
 		whatWillICallThis();
 	}
 
