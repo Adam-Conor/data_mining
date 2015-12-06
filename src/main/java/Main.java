@@ -20,7 +20,7 @@ public class Main {
 		simpleClassificationAndPrediction();
 
 		/* Linear Regression attempt described in Report */
-		whatWillICallThis();
+		exponentialRegression();
 	}
 
 	public static void simpleClassificationAndPrediction() {
@@ -120,7 +120,7 @@ public class Main {
 		System.out.println("Player to win: " + winnerName);
 	}
 
-	public static void whatWillICallThis() {
+	public static void exponentialRegression() {
 		int size = DataInfo.getTopPlayers();
 		/* Get all the weeks data in a week array */
 		Week[] weeks = Utils.getWeeks();
