@@ -5,6 +5,9 @@
  * @author Adam O'Flynn <adam.oflynn7@mail.dcu.ie>
  * @since 2015-11-30
  */
+
+import java.lang.Math;
+
 public class Player {
 	private String name;
 
@@ -16,6 +19,8 @@ public class Player {
 	private double actualEvents;
 	private double totalPointsGained;
 	private double totalPointsLost;
+	private double pointsDifference;
+	private double eventsDifferece;
 
 	public Player() {}
 
@@ -39,6 +44,8 @@ public class Player {
 		this.actualEvents = actualEvents;
 		this.totalPointsGained = totalPointsGained;
 		this.totalPointsLost = totalPointsLost;
+		this.pointsDifference = totalPointsGained - Math.abs(totalPointsLost); 
+		this.eventsDifferece = actualEvents - divisorEvents;
 	}
 
 	/**
@@ -179,6 +186,22 @@ public class Player {
 	}
 
 	/**
+	 * Get the points difference for this player
+	 * @return the points difference for this player as a double
+	 */
+	public double getPointsDifference() {
+		return pointsDifference;
+	}
+
+	/**
+	 * Get the events difference for this player
+	 * @return the events difference for this player as a double
+	 */
+	public double getEventsDifference() {
+		return eventsDifferece;
+	}
+
+	/**
 	 * ToString function
 	 * @return String representation of the Player
 	 */
@@ -213,6 +236,12 @@ public class Player {
 			builder.append(", ");
 			builder.append("Total Points Lost: ");
 			builder.append(totalPointsLost);
+			builder.append(", ");
+			builder.append("Weekly Points Difference: ");
+			builder.append(pointsDifference);
+			builder.append(", ");
+			builder.append("Weekly Events Difference: ");
+			builder.append(eventsDifferece);
 			builder.append("]");
 
 			return builder.toString();
