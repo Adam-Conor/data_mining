@@ -19,7 +19,7 @@ public class Main {
 		/* Simple classification and prediction described in Report */
 		simpleClassificationAndPrediction();
 
-		/* Linear Regression attempt described in Report */
+		/* Exponential Regression attempt described in Report */
 		exponentialRegression();
 	}
 
@@ -75,8 +75,6 @@ public class Main {
 		/* Show potential players */
 		for(Object o : potentialPlayerArray) {
 			String pPlayer = o.toString();
-
-			//System.out.println(pPlayer);
 		}
 
 		int size = weeks.length * potentialPlayerArray.length;
@@ -121,74 +119,23 @@ public class Main {
 	}
 
 	public static void exponentialRegression() {
+		/* Top 30 players */
 		int size = DataInfo.getTopPlayers();
 		/* Get all the weeks data in a week array */
 		Week[] weeks = Utils.getWeeks();
 
-		/* All work for the leader per week */
-		HashMap<Integer, Double> gained = new HashMap<>();
-		HashMap<Integer, Double> lost = new HashMap<>();
-		HashMap<Integer, Double> pointsDifference = new HashMap<>();
-		HashMap<Integer, Player[]> play = new HashMap<>();
-		String first = weeks[0].getPlayer(0).getName();
-
-		for(Week w : weeks) {
-			Player player = w.getPlayer(0);
-			if(!player.getName().equals(first)) {
-				first = player.getName();
-			}
-
-			Double pointsGained = player.getTotalPointsGained();
-			Double pointsLost = player.getTotalPointsLost();
-			int weekNo = w.getWeekNumber();
-			System.out.println(player.getPointsDifference());
-
-			gained.put(weekNo, pointsGained);
-			lost.put(weekNo, pointsLost);
-			pointsDifference.put(weekNo, player.getPointsDifference());
-		}
-
-
-		HashMap<String, ArrayList<Double>> performance = new HashMap<>();
-		ArrayList<Double> playerPerf = new ArrayList<>();
-
-		for(Week w : weeks){
-			Player[] p = new Player[size];
-			for (int j = 0; j < size; j++) {
-				p[j] = w.getPlayer(j);
-				play.put(w.getWeekNumber(), p);
-			}
-		}
-
-		Double value = 0.0;
-		for (Map.Entry<Integer, Player[]> entry : play.entrySet() ) {
-			Player[] ps = entry.getValue();
-			int i = 0;
-			for (Player p : ps ) {
-				if(p.getName().equals("Jason Day")){
-					System.out.println("Rank : " + p.getRank());
-					System.out.println("Points Difference: " + p.getPointsDifference());
-					System.out.println("Average Points: " + p.getAvgPoints());
-					System.out.println("Events: " + p.getDivisorEvents());
-					System.out.println("Actual Events: " + p.getActualEvents());
-					System.out.println();
-					break;
-				} 
-				else i++;
-			}
-			value += ps[i].getPointsDifference();
-		}
-
-
+		// Arrays for holding golf and performance data
 		double[] rank = new double[size];
 		double[] avg = new double[size];
 		String[] name = new String[size];
 		double[] diff = new double[size];
 		double[] totGained = new double[size];
 		double[] totLost = new double[size];
-		//weeks[0].getPlayer(0).getName();
-		Player[] p = weeks[0].getPlayers();
 
+		Player[] p = weeks[12].getPlayers();
+
+
+		// Arrays of data for testing regression with any two variables
 		for (int i = 0; i < size; i++) {
 			rank[i] = p[i].getRank();
 			avg[i]  = p[i].getAvgPoints();
@@ -210,46 +157,25 @@ public class Main {
 
 		for(int i=0;i<size;i++)
 		{
-			sumX = sumX + diff[i];
-			sumX2 = sumX2 + Math.pow(diff[i], 2);
+			// Sum of Squares described in Report for exponential
+			sumX = sumX + rank[i];
+			sumX2 = sumX2 + Math.pow(rank[i], 2);
 
 			// exponential
 			sumY = sumY + Math.log(avg[i]);
 			sumY2 = sumY2 + Math.pow(Math.log(avg[i]), 2);
-			sumXY = sumXY + (diff[i]*(Math.log(avg[i])));
+			sumXY = sumXY + (rank[i]*(Math.log(avg[i])));
 
-			// linear
-			//sumYlin = sumYlin + energy.get(i);
-			//sumY2lin = sumY2lin + Math.pow(energy.get(i),2);
-			//sumXYlin = sumXYlin + oat.get(i)*energy.get(i);
 		}
+		// In report
 		Double b = 0.00;
 		b = ((size*sumXY) - (sumX*sumY))/(size*sumX2 - (sumX*sumX));
 
+		// In report
 		Double a = 0.00;
 		a = Math.pow(e, (sumY - (b*sumX))/size);
 
-		Double c = 0.00;	// numerator
-		Double d = 0.00;	// denominator
-		Double r = 0.00;	// coefficient of determination
-		c = (b)*(sumXY - sumX*sumY/size);
-		d = sumY2 - (sumY*sumY)/size;
-		r = c/d;
-
-		Double p1 = 0.00;
-		if(r > 0){
-			p1 = Math.sqrt(r);
-		} else {
-			p1 = 0.00;
-		}
-		Double std_err = 0.00;
-		std_err = Math.sqrt((d-c)/(size-2));
-
-		System.out.println("Exponential regression model for n equals " + size + ":");
+		System.out.println("Exponential regression model for variables:");
 		System.out.println("y = " + a + "*(e^(" + b + "*x))");
-		System.out.println("R-square value equals " + r);
-		System.out.println("Correlation equals " + p1);
-		System.out.println("Standard Error equals " + std_err);
-		System.out.println("");	
 	}
 }
