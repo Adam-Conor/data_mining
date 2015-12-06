@@ -2,7 +2,6 @@
  * Class for holding information about the format of the data such as
  * total number of rows and index of values in csv file
  * All work is our own
- * TODO comment new functions
  * @author Conor Smyth <conor.smyth39@mail.dcu.ie>
  * @author Adam O'Flynn <adam.oflynn7@mail.dcu.ie>
  * @since 2015-11-30
@@ -64,30 +63,58 @@ public class DataInfo {
 		return INDEX_OF_AVG_POINTS;
 	}
 
+	/**
+	 * Get the index of the rank in the csv file
+	 * @return position of the rank field as int
+	 */
 	public static int getIndexOfRank() {
 		return INDEX_OF_RANK;
 	}
 
+	/**
+	 * Get the index of the previous rank in the csv file
+	 * @return position of the previous rank as int
+	 */
 	public static int getIndexOfPrevRank() {
 		return INDEX_OF_PREV_RANK;
 	}
 
+	/**
+	 * Get the index of the total points
+	 * @return position of the total points as int
+	 */
 	public static int getIndexOfTotalPoints() {
 		return INDEX_OF_TOTAL_POINTS;
 	}
 
+	/**
+	 * Get the index of the divisor events
+	 * @return position of the divisor events as int
+	 */
 	public static int getIndexOfDivisorEvents() {
 		return INDEX_OF_DIV_EVENTS;
 	}
 
+	/**
+	 * Get the index of the actual events
+	 * @return position of the actual events as int
+	 */
 	public static int getIndexOfActualEvents() {
 		return INDEX_OF_EVENTS;
 	}
 
+	/**
+	 * Get the index of the total points gained
+	 * @return position of the total points gained as int
+	 */
 	public static int getIndexOfTotalPointsGained() {
 		return INDEX_OF_TOTAL_POINTS_GAIN;
 	}
 
+	/**
+	 * Get the index of the total points lost
+	 * @Return position of the total points lost as int
+	 */
 	public static int getIndexOfTotalPointsLost() {
 		return INDEX_OF_TOTAL_POINTS_LOST;
 	}
